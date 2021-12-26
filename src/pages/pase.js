@@ -129,7 +129,7 @@ const PasePage = () => {
 
     <div css={vacuna}>
         <div css={[vacPos, texto]}>Sinopharm Vacuna SARSCOV 2</div>
-        <div css={[lotePos, texto]}>202108B1249</div>
+        <div css={[lotePos, texto]}>202109B1358</div>
         <div css={[fechaPos, texto]}>21/10/2021</div>
         <div css={[dosisPos, texto]}>Segunda</div>
         <div css={[dondePos, texto]}>{donde}</div>
