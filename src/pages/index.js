@@ -70,24 +70,6 @@ const vacunasOptions = [
   "Janssen Ad26 COV2 S", // De Janssen no estoy seguro necesito un token de muestra o una foto pero se que esta
 ];
 
-function VacunaSelect(props) {
-  const { id, defaultValue, onChange } = props;
-
-  return (
-    <select
-      defaultValue={defaultValue}
-      onChange={onChange}
-      id={"vacuna-select-" + id}
-    >
-      {vacunasOptions.map((nombre) => {
-        <option key={id + "-select-" + nombre} value={nombre}>
-          {nombre}
-        </option>;
-      })}
-    </select>
-  );
-}
-
 // markup
 const IndexPage = () => {
   const [nombre, setNombre] = React.useState("");
@@ -312,11 +294,17 @@ const IndexPage = () => {
               />
 
               <span css={labelStyle}>Vacuna:</span>
-              <VacunaSelect
-                defaultValue={vacuna.vacunaNombre}
-                id={index}
-                onChange={(ev) => setVacunaNombre(ev.target.value, index)}
-              />
+              <select
+                value={vacuna.vacunaNombre}
+                onChange={(ev) => {
+                  setVacunaNombre(ev.target.value, index);
+                }}
+                style={{ width: "300px", height: "24px" }}
+              >
+                {vacunasOptions.map((n) => {
+                  return <option value={n}>{n}</option>;
+                })}
+              </select>
             </label>
           );
         })}
