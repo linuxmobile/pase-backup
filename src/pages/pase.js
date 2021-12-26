@@ -42,15 +42,17 @@ const nombrePos = css`
     top: 230px;
     left: 510px;
     text-transform: uppercase;
+    width:420px;
+    line-height: 0.9;
 `
 
 const dniPos = css`
-    top: 260px;
+    top: 270px;
     left: 510px;
 `
 
 const nacPos = css`
-    top: 290px;
+    top: 300px;
     left: 510px;
 `
   
