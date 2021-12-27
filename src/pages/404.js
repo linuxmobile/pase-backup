@@ -30,6 +30,7 @@ const NotFoundPage = () => {
     <main style={pageStyles}>
       <title>404</title>
       <h1 style={headingStyles}>404</h1>
+      <h2><Link to="/">Volver</Link></h2>
     </main>
   )
 }

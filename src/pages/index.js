@@ -268,43 +268,47 @@ const IndexPage = () => {
               />
               <span css={titleStyle}>{vacuna.dosis} dosis</span>
               <br />
+              
+              {vacunasActivas[index] ? 
+              <span>
+                <span css={labelStyle}>Lugar de aplicacion:</span>
+                <textarea
+                  css={inputTextStyle}
+                  defaultValue={vacuna.lugarAplicacion}
+                  type="text"
+                  onChange={(ev) => setLugarAplicacion(ev.target.value, index)}
+                />
 
-              <span css={labelStyle}>Lugar de aplicacion:</span>
-              <textarea
-                css={inputTextStyle}
-                defaultValue={vacuna.lugarAplicacion}
-                type="text"
-                onChange={(ev) => setLugarAplicacion(ev.target.value, index)}
-              />
+                <span css={labelStyle}>Fecha de aplicacion:</span>
+                <DatePicker
+                  selected={new Date(Date.parse(vacuna.fechaAplicacion))}
+                  onChange={(date) => setFechaAplicacion(formatDate(date), index)}
+                  dateFormat="dd/MM/yyyy"
+                  showYearDropdown={true}
+                />
 
-              <span css={labelStyle}>Fecha de aplicacion:</span>
-              <DatePicker
-                selected={new Date(Date.parse(vacuna.fechaAplicacion))}
-                onChange={(date) => setFechaAplicacion(formatDate(date), index)}
-                dateFormat="dd/MM/yyyy"
-                showYearDropdown={true}
-              />
+                <span css={labelStyle}>Lote:</span>
+                <textarea
+                  css={inputTextStyle}
+                  defaultValue={vacuna.lote}
+                  type="text"
+                  onChange={(ev) => setLote(ev.target.value, index)}
+                />
 
-              <span css={labelStyle}>Lote:</span>
-              <textarea
-                css={inputTextStyle}
-                defaultValue={vacuna.lote}
-                type="text"
-                onChange={(ev) => setLote(ev.target.value, index)}
-              />
-
-              <span css={labelStyle}>Vacuna:</span>
-              <select
-                value={vacuna.vacunaNombre}
-                onChange={(ev) => {
-                  setVacunaNombre(ev.target.value, index);
-                }}
-                style={{ width: "300px", height: "24px" }}
-              >
-                {vacunasOptions.map((n) => {
-                  return <option value={n}>{n}</option>;
-                })}
-              </select>
+                <span css={labelStyle}>Vacuna:</span>
+                <select
+                  value={vacuna.vacunaNombre}
+                  onChange={(ev) => {
+                    setVacunaNombre(ev.target.value, index);
+                  }}
+                  style={{ width: "300px", height: "24px" }}
+                >
+                  {vacunasOptions.map((n) => {
+                    return <option value={n}>{n}</option>;
+                  })}
+                </select>
+              </span>
+              : null}
             </label>
           );
         })}
