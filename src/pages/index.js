@@ -67,6 +67,7 @@ const vacunasOptions = [
   "Sputnik V COVID19 Instituto Gamaleya",
   "AztraZeneca ChAdOx1 S",
   "Janssen Ad26 COV2 S", // De Janssen no estoy seguro necesito un token de muestra o una foto pero se que esta
+  "Pfizer-BioNTech COVID-19"
 ];
 
 // markup
