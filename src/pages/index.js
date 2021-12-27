@@ -271,7 +271,6 @@ const IndexPage = () => {
               />
               <span css={titleStyle}>{vacuna.dosis} dosis</span>
             </label>
-              <br />
               
               {vacunasActivas[index] ? 
               <>
