@@ -60,8 +60,11 @@ function Vacuna(props) {
 export default function PasePage() {
   const [token] = useQueryParam("token", StringParam);
   const [qr, setQr] = React.useState("");
-
-  var decoded = jwt.verify(token, "asuperprivatekeythatsnotvalid");
+  if(token){
+    var decoded = jwt.verify(token, "asuperprivatekeythatsnotvalid");
+  }else{
+    return (<span>Error</span>)
+  }
 
   React.useEffect(() => {
     QRCode.toDataURL(`${decoded.bar === true ? getHostName() : "https://apisalud.msal.gob.ar"}/carnetCovid/v2/miArgentina/covid/carnet/validar/img?token=${token}`)
