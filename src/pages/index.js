@@ -173,7 +173,9 @@ const IndexPage = () => {
       const aplicacionesData = [];
       vacunasActivas.forEach((active, index) => {
         if (active) {
-          aplicacionesData.push(vacunas[index]);
+          const vacunaData = vacunas[index];
+          vacunaData.fechaAplicacion = formatDate(vacunaData.fechaAplicacion);
+          aplicacionesData.push(vacunaData);
         }
       });
 
@@ -256,6 +258,7 @@ const IndexPage = () => {
 
         {vacunas.map((vacuna, index) => {
           return (
+            <>
             <label css={labelBlock}>
               <input
                 type="checkbox"
@@ -267,10 +270,11 @@ const IndexPage = () => {
                 }}
               />
               <span css={titleStyle}>{vacuna.dosis} dosis</span>
+            </label>
               <br />
               
               {vacunasActivas[index] ? 
-              <span>
+              <>
                 <span css={labelStyle}>Lugar de aplicacion:</span>
                 <textarea
                   css={inputTextStyle}
@@ -282,7 +286,7 @@ const IndexPage = () => {
                 <span css={labelStyle}>Fecha de aplicacion:</span>
                 <DatePicker
                   selected={new Date(Date.parse(vacuna.fechaAplicacion))}
-                  onChange={(date) => setFechaAplicacion(formatDate(date), index)}
+                  onChange={(date) => setFechaAplicacion(date, index)}
                   dateFormat="dd/MM/yyyy"
                   showYearDropdown={true}
                 />
@@ -307,9 +311,9 @@ const IndexPage = () => {
                     return <option value={n}>{n}</option>;
                   })}
                 </select>
-              </span>
+              </>
               : null}
-            </label>
+            </>
           );
         })}
 
